@@ -77,23 +77,25 @@
 
 }
 
+
     </style>
 </head>
-<body>
+<body style="background-color: rgb(196, 196, 224);">
     
 <div style="margin-left: 500px;margin-top: 200px;">
     
     <div>
-        <h1 id="ques" style="font-family: ;"></h1>
-        <ul  id="options" style="list-style-type: none">
+        <h1 id="tag"></h1>
+        <h1 id="ques" style="font-family: Monoton, cursive;"></h1>
+        <ul  id="options" style="list-style-type: none;font-weight: bolder;">
   
         </ul>
     </div>
 
     <div id="back">
         <button onclick="prev()" class="hack">Prev</button>
-        <button onclick="next()" class="hack">Next</button>
-        <button onclick="submit()" class="hack">submit</button>
+        <button onclick="next()" class="hack" style="margin-left: 30px;">Next</button>
+        <button onclick="submit()" class="hack" style="margin-left: 40px;">submit</button>
     </div>
     
 
@@ -101,20 +103,21 @@
     <script>
         //Questions array
         const questions = [
-            {ques: "Who is the CEO of Emperor J Enterprises", options: ["precious", "Henshaw", "Timi", "Damilare"], answer: "Jazy"},
-            {ques: "Na who sing the song?", options: ["Mubarack", "Juwon", "Heritage", "Dami"], answer: "Juwon"},
-            {ques: "Na who be fans?", options: ["Tobi", "Tumininu", "Wunmi", "Cheif"], answer: "Tobi"},
-            {ques: "Na who collect the money?", options: ["Anu", "Ife", "Aduke", "Asake"], answer: "Ife"},
-            {ques: "Na who do this beat?", options: ["Jazy", "Henshaw", "Timi", "Damilare"], answer: "Jazy"},
-            {ques: "Na who sing the song?", options: ["Mubarack", "Juwon", "Heritage", "Dami"], answer: "Juwon"},
-            {ques: "Na who be fans?", options: ["Tobi", "Tumininu", "Wunmi", "Cheif"], answer: "Tobi"},
-            {ques: "Na who collect the money?", options: ["Anu", "Ife", "Aduke", "Asake"], answer: "Ife"},
+            {ques: "Who is the CEO of Emperor J Enterprises", options: ["precious", "Henshaw", "Timi", "Damilare"], answer: "Jazy", tag:"QUESTION 1 OUT OF 10"},
+            {ques: "Na who sing the song?", options: ["Mubarack", "Juwon", "Heritage", "Dami"], answer: "Juwon", tag:"QUESTION 2 OUT OF 10"},
+            {ques: "Na who be fans?", options: ["Tobi", "Tumininu", "Wunmi", "Cheif"], answer: "Tobi", tag:"QUESTION 3 OUT OF 10"},
+            {ques: "Na who collect the money?", options: ["Anu", "Ife", "Aduke", "Asake"], answer: "Ife", tag:"QUESTION 4 OUT OF 10"},
+            {ques: "Na who do this beat?", options: ["Jazy", "Henshaw", "Timi", "Damilare"], answer: "Jazy", tag:"QUESTION 5 OUT OF 10"},
+            {ques: "Na who sing the song?", options: ["Mubarack", "Juwon", "Heritage", "Dami"], answer: "Juwon", tag:"QUESTION 6 OUT OF 10"},
+            {ques: "Na who be fans?", options: ["Tobi", "Tumininu", "Wunmi", "Cheif"], answer: "Tobi", tag:"QUESTION 7 OUT OF 10"},
+            {ques: "Na who collect the money?", options: ["Anu", "Ife", "Aduke", "Asake"], answer: "Ife", tag:"QUESTION 8 OUT OF 10"},
         ]
         let questionHTML = document.getElementById("ques"); 
         let options = document.getElementById("options");
         let sel_ans = [] //array to store any answers selected by the current (index see line 71)
         let index = 0; //used to change from questions to question either next or prev
         let points = 0; //where t store your points
+        let tagHTML = document.getElementById('tag');
 
 
    
