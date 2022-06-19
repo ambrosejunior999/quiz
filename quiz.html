@@ -81,9 +81,9 @@
     </style>
 </head>
 <body style="background-color: rgb(196, 196, 224);">
-    
-<div style="margin-left: 500px;margin-top: 200px;" id="all">
     <h1 id="h1"></h1>
+<div style="margin-left: 500px;margin-top: 200px;" id="all">
+    
     <div>
         <h1 id="tag"></h1>
         <h1 id="ques" style="font-family: Monoton, cursive;"></h1>
@@ -190,7 +190,8 @@
                 }
             }
             document.getElementById('all').style.display = "none" 
-            document.getElementById('h1').innerHTML = `you scored ${points} out of 10`//display point (create an element and display this on your html)
+           let alert = document.getElementById('h1').innerHTML = `you scored ${points} out of 10`
+         alert//display point (create an element and display this on your html)
         }
 
 
