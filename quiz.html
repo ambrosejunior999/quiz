@@ -82,8 +82,8 @@
 </head>
 <body style="background-color: rgb(196, 196, 224);">
     
-<div style="margin-left: 500px;margin-top: 200px;">
-    
+<div style="margin-left: 500px;margin-top: 200px;" id="all">
+    <h1 id="h1"></h1>
     <div>
         <h1 id="tag"></h1>
         <h1 id="ques" style="font-family: Monoton, cursive;"></h1>
@@ -102,22 +102,24 @@
 </div>
     <script>
         //Questions array
+        let tagHTML = document.getElementById('tag');
         const questions = [
-            {ques: "Who is the CEO of Emperor J Enterprises", options: ["precious", "Henshaw", "Timi", "Damilare"], answer: "Jazy", tag:"QUESTION 1 OUT OF 10"},
-            {ques: "Na who sing the song?", options: ["Mubarack", "Juwon", "Heritage", "Dami"], answer: "Juwon", tag:"QUESTION 2 OUT OF 10"},
-            {ques: "Na who be fans?", options: ["Tobi", "Tumininu", "Wunmi", "Cheif"], answer: "Tobi", tag:"QUESTION 3 OUT OF 10"},
-            {ques: "Na who collect the money?", options: ["Anu", "Ife", "Aduke", "Asake"], answer: "Ife", tag:"QUESTION 4 OUT OF 10"},
-            {ques: "Na who do this beat?", options: ["Jazy", "Henshaw", "Timi", "Damilare"], answer: "Jazy", tag:"QUESTION 5 OUT OF 10"},
-            {ques: "Na who sing the song?", options: ["Mubarack", "Juwon", "Heritage", "Dami"], answer: "Juwon", tag:"QUESTION 6 OUT OF 10"},
-            {ques: "Na who be fans?", options: ["Tobi", "Tumininu", "Wunmi", "Cheif"], answer: "Tobi", tag:"QUESTION 7 OUT OF 10"},
-            {ques: "Na who collect the money?", options: ["Anu", "Ife", "Aduke", "Asake"], answer: "Ife", tag:"QUESTION 8 OUT OF 10"},
+            {ques: "How many prophets of baal were killed on mount carmel", options: ["300", "160", "450", "830"], answer: "450", tag:"QUESTION 1 OUT OF 10"},
+            {ques: "Who is the father of Jospeh", options: ["Lucifer", "Benjamin", "Asheerah", "Jacob"], answer: "Jacob", tag:"QUESTION 2 OUT OF 10"},
+            {ques: "At what gate was the lame man healed by peter", options: ["Toll gate", "Gate of hell", "Beautiful gate", "Your house gate"], answer: "Beautiful gate", tag:"QUESTION 3 OUT OF 10"},
+            {ques: "Why did jospeh refuse to sleep with potiphars wife", options: ["She was older than him", "He was not in the mood", "He had the fear of God in him", "He was indecisive"], answer: "He had the fear of God in him", tag:"QUESTION 4 OUT OF 10"},
+            {ques: "Solomon was best known in the bible for his", options: ["Wisdom", "Fame", "Unwise decisions", "Money"], answer: "Wisdom", tag:"QUESTION 5 OUT OF 10"},
+            {ques: "Which of the following is the last book in the bible", options: ["Genesis", "Psalm", "Revelations", "Paul"], answer: "Revelations", tag:"QUESTION 6 OUT OF 10"},
+            {ques: "Who saved the israellites from the shackles of the egyptians", options: ["Solomom", "Mubarak", "Moses", "Pharoah"], answer: "Moses", tag:"QUESTION 7 OUT OF 10"},
+            {ques: "Why did jesus get angry when he went to jerusalem", options: ["The gate of the temple was closed", "The temple was turned to a market square", "The priests were absent", "None of the above"], answer: "The temple was turned to a market square", tag:"QUESTION 8 OUT OF 10"},
         ]
+        
         let questionHTML = document.getElementById("ques"); 
         let options = document.getElementById("options");
         let sel_ans = [] //array to store any answers selected by the current (index see line 71)
         let index = 0; //used to change from questions to question either next or prev
         let points = 0; //where t store your points
-        let tagHTML = document.getElementById('tag');
+       
 
 
    
@@ -187,7 +189,8 @@
                     points = points + 5; //if answer is correct add 5 point to points variable
                 }
             }
-            console.log(points) //display point (create an element and display this on your html)
+            document.getElementById('all').style.display = "none" 
+            document.getElementById('h1').innerHTML = `you scored ${points} out of 10`//display point (create an element and display this on your html)
         }
 
 
@@ -196,6 +199,8 @@
             //if index delcared on line 37 is equal to the highest index 
             if(index < (questions.length - 1)){
                 index++;
+            }else if(questions > questions.length){
+                document.getElementById('all').style.display = "none"
             }
             displayQuestion() // display the question and their options
         }
@@ -206,6 +211,10 @@
         function prev(){
             if(index > 0) index--;
             displayQuestion()
+        }
+        function shark() {
+            if(index > index.length)
+            document.getElementById('all').style.display = "none"
         }
     </script>
 </body>
