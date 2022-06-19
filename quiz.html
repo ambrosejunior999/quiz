@@ -73,14 +73,26 @@
   top: 0;
   border-radius: 10px;
 }
-#back{
-
+#countdown{
+width:100px ;
+height:40px ;
+border-radius:15px ;
+background-color: ;
+font-weight:bolder ;
+font-size:24px ;
+font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif ;
 }
-
+#h1{
+margin: auto;
+font-size: 28px;
+margin-left: 440px;
+margin-top: 250px;
+}
 
     </style>
 </head>
 <body style="background-color: rgb(196, 196, 224);">
+    <div id="countdown"></div>
     <h1 id="h1"></h1>
 <div style="margin-left: 500px;margin-top: 200px;" id="all">
     
@@ -102,7 +114,7 @@
 </div>
     <script>
         //Questions array
-        let tagHTML = document.getElementById('tag');
+        
         const questions = [
             {ques: "How many prophets of baal were killed on mount carmel", options: ["300", "160", "450", "830"], answer: "450", tag:"QUESTION 1 OUT OF 10"},
             {ques: "Who is the father of Jospeh", options: ["Lucifer", "Benjamin", "Asheerah", "Jacob"], answer: "Jacob", tag:"QUESTION 2 OUT OF 10"},
@@ -116,33 +128,23 @@
         
         let questionHTML = document.getElementById("ques"); 
         let options = document.getElementById("options");
-        let sel_ans = [] //array to store any answers selected by the current (index see line 71)
-        let index = 0; //used to change from questions to question either next or prev
-        let points = 0; //where t store your points
-       
+        let sel_ans = [] ;
+        let index = 0; 
+        let points = 0; 
+        let tag = document.getElementById('tag');
 
 
    
-        /*
-        *used to display the questions and answers if the index (declared on line 37) changes
-        */
+      
         function displayQuestion(){
 
             questionHTML.innerText = questions[index].ques; //gets the questions
 
-            options.innerHTML = "" // clears the options <ul> innerHTML before ading new one to avoid having the wrong options for another question
+            options.innerHTML = "" 
 
             for (let i = 0; i < questions[index].options.length; i++) {
 
-                let opt = questions[index].options[i]; //it stores the options for current index (if index is 0 then it stores "Jazy", "Henshaw", "Timi" or "Damilare" based on if i is 0, 1, 2 or 3)
-                
-                /**
-                 * conditional statement for adding options
-                 * and also check if an option has been selected before
-                 * or not.......
-                 * line 65 has a radio button that is checked if selected anser is equall to the current option (62)
-                 * 
-                 * */
+                let opt = questions[index].options[i]; 
                 if(sel_ans[index] == opt){
                     options.innerHTML += `
                     <li>
@@ -162,48 +164,39 @@
             }
          
         }
-        displayQuestion() //calls the function that displays the question and optons when you reload 
+        displayQuestion() 
 
-        /*
-         * 
-         *  funcitoin use to store the selected answer selected
-         * from the list of options in the sel_ans array delcared on line 36
-         * the value of the parameter @opt is passed on line 72 and line 65
-         * 
-         * */
+      
         function selectedAnswer(opt){
             sel_ans[index] = opt;
             console.log(sel_ans)
         }
 
-        /*
-        *function used to calculate points when submitted
-        * 
-        **/
         function submit(){
-            //the loop runs accordiing to the number of questions (also the number of the sel_ans array)
+           
             for (let i = 0; i < questions.length; i++) {
 
-                //checks if the answer provided in the questions array is equall to the sel_ans based on  same index
+              
                 if(questions[i].answer == sel_ans[i]){
-                    points = points + 5; //if answer is correct add 5 point to points variable
+                    points = points + 5; //5 points for each correct answer
                 }
             }
-            document.getElementById('all').style.display = "none" 
-           let alert = document.getElementById('h1').innerHTML = `you scored ${points} out of 10`
-         alert//display point (create an element and display this on your html)
+            document.getElementById("all").style.display = "none";
+    document.getElementById('countdown').style.display = 'none'
+    document.getElementById('h1').innerHTML =`CONGRATULATIONS YOU BAGGED ${points}$`
         }
 
 
-        //for next
+      
         function next(){
-            //if index delcared on line 37 is equal to the highest index 
-            if(index < (questions.length - 1)){
+                     if(index < (questions.length - 1)){
                 index++;
             }else if(questions > questions.length){
-                document.getElementById('all').style.display = "none"
+                document.getElementById("all").style.display = "none";
+    document.getElementById('countdown').style.display = 'none'
+    document.getElementById('h1').innerHTML =`CONGRATULATIONS YOU BAGGED ${points}$`
             }
-            displayQuestion() // display the question and their options
+            displayQuestion() // display the questions
         }
 
         
@@ -217,6 +210,29 @@
             if(index > index.length)
             document.getElementById('all').style.display = "none"
         }
+        var timeleft = 50;
+var downloadTimer = setInterval(function(){
+    let index = 0;
+    let points = 0;
+    for (let i = 0; i < questions.length; i++) {
+
+              
+if(questions[i].answer == sel_ans[i]){
+    points = points + 5; //5 points for each correct answer
+}
+}
+
+
+  if(timeleft <= 0){
+    clearInterval(downloadTimer);
+    document.getElementById("all").style.display = "none";
+    document.getElementById('countdown').style.display = 'none'
+    document.getElementById('h1').innerHTML =`CONGRATULATIONS YOU BAGGED ${points}$`
+  } else {
+    document.getElementById("countdown").innerHTML = timeleft ;
+  }
+  timeleft -= 1;
+}, 1000);
     </script>
 </body>
 </html>
