@@ -88,11 +88,18 @@ font-size: 28px;
 margin-left: 440px;
 margin-top: 250px;
 }
+#ques{
+    margin-bottom: 50px;
+    
+}
 
     </style>
 </head>
 <body style="background-color: rgb(196, 196, 224);">
     <div id="countdown"></div>
+    <div id="whot">
+
+    
     <h1 id="h1"></h1>
 <div style="margin-left: 500px;margin-top: 200px;" id="all">
     
@@ -111,6 +118,7 @@ margin-top: 250px;
     </div>
     
 
+</div>
 </div>
     <script>
         //Questions array
@@ -181,9 +189,10 @@ margin-top: 250px;
                     points = points + 5; //5 points for each correct answer
                 }
             }
-            document.getElementById("all").style.display = "none";
-    document.getElementById('countdown').style.display = 'none'
-    document.getElementById('h1').innerHTML =`CONGRATULATIONS YOU BAGGED ${points}$`
+            document.getElementById('all').style.display = "none" 
+           document.getElementById('h1').innerHTML = `CONGARTULATIONS YOU BAGGED ${points}$`
+           document.getElementById('countdown').style.display = 'none'
+         
         }
 
 
@@ -192,7 +201,7 @@ margin-top: 250px;
                      if(index < (questions.length - 1)){
                 index++;
             }else if(questions > questions.length){
-                document.getElementById("all").style.display = "none";
+               document.getElementById("all").style.display = "none";
     document.getElementById('countdown').style.display = 'none'
     document.getElementById('h1').innerHTML =`CONGRATULATIONS YOU BAGGED ${points}$`
             }
@@ -210,7 +219,7 @@ margin-top: 250px;
             if(index > index.length)
             document.getElementById('all').style.display = "none"
         }
-        var timeleft = 50;
+        var timeleft = 100;
 var downloadTimer = setInterval(function(){
     let index = 0;
     let points = 0;
